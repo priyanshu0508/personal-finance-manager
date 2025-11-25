@@ -4,7 +4,7 @@ A clean and powerful web-based personal finance tracking application built with 
 
 ---
 
-## Features:-
+## Features
 
 ### **User Authentication:-**
 
@@ -21,7 +21,7 @@ A clean and powerful web-based personal finance tracking application built with 
 
 ### **Filtering System:-**
 
-Filter transactions by:-
+Filter transactions by->
 
 * Type (Income / Expense)
 * Category
@@ -36,13 +36,13 @@ Filter transactions by:-
 
 ### **Interactive Financial Analytics:-**
 
-Powered by **Chart.js**
+Powered by **Chart.js->**
 
 * Monthly Income vs Expense Bar Chart
 * Category-Wise Expense Pie Chart
 * Auto-calculated totals (income, expense, balance)
 
-### 🧾 **Budget Management:-**
+### **Budget Management**
 
 * Set monthly limits per category
 * Warning indicators
@@ -153,6 +153,3 @@ You may use a `.env` file:
 ```
 SECRET_KEY=your_secret_key
 FLASK_ENV=development
-
-
-Would you like me to also create a **perfect README badge header**, or generate a **professional GitHub project cover image**?
