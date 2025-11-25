@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from datetime import datetime
-from .models import Transaction, Budget  # <-- Fix here
+from .models import Transaction, Budget  
 from . import db
 
 
@@ -52,9 +52,7 @@ def add_transaction():
 
 
 
-# ======================
-# ADD THESE BELOW
-# ======================
+
 
 @transaction_blueprint.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
