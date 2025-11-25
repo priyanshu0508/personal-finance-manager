@@ -2,6 +2,6 @@ flask
 flask-bcrypt
 flask-login
 flask_sqlalchemy
-pandas
+pandas #(if needed)
 numpy  #(if needed)
 Flask-Migrate
