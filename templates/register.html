@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- Toastify JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dynamic Favicon (Green Shield) -->
+    <link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Container -->
+    <div class="max-w-5xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+        
+        <!-- Left Side: Brand & Visuals -->
+        <div class="relative hidden lg:flex flex-col justify-between p-12 bg-slate-900 overflow-hidden text-white">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-emerald-600/20 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-600/20 blur-3xl"></div>
+
+            <div class="relative z-10 flex items-center gap-3">
+                <div class="bg-emerald-500 p-2 rounded-lg text-white">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold tracking-tight">FinTrack</span>
+            </div>
+
+            <div class="relative z-10 space-y-8 my-auto">
+                <h1 class="text-4xl font-bold leading-tight">
+                    Master your <br/>
+                    <span class="text-emerald-400">personal finances.</span>
+                </h1>
+                <p class="text-slate-400 text-lg max-w-sm">
+                    Simple, secure, and smart wealth management for everyone.
+                </p>
+            </div>
+
+            <div class="relative z-10 text-slate-500 text-xs">
+                <span>© 2024 FinTrack Inc.</span>
+            </div>
+        </div>
+
+        <!-- Right Side: Register Form -->
+        <div class="flex flex-col justify-center p-8 md:p-12 lg:p-16 relative bg-white">
+            
+            <!-- Mobile Logo -->
+            <div class="lg:hidden flex items-center gap-2 mb-8">
+                <div class="bg-emerald-600 p-1.5 rounded-lg text-white">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span class="text-xl font-bold text-slate-900">FinTrack</span>
+            </div>
+
+            <div class="w-full max-w-md mx-auto relative">
+                
+                <div class="fade-in">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-slate-900">Register Page</h2>
+                    </div>
+                    
+                    <!-- Flash Messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class="mb-4">
+                        {% for category, msg in messages %}
+                            {% if "Transaction" not in msg %}
+                            <div class="p-3 rounded-lg text-white mb-2
+                                {% if category == 'success' %} bg-emerald-600
+                                {% elif category == 'error' %} bg-red-600
+                                {% else %} bg-gray-700 {% endif %}">
+                                {{ msg }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+
+
+                    <form method="POST" action="/register">
+
+                        <!-- Input: Username -->
+                        <div class="mb-5">
+                            <input type="text" placeholder="Username" name="username"
+                                value="{{ username or '' }}"
+                                class="block w-full px-4 py-3 border rounded-xl
+                                {% if errors.username %} border-red-500 {% else %} border-slate-200 {% endif %}">
+
+                                {% if errors.username %}
+                                <p class="text-red-600 text-xs mt-1">{{ errors.username }}</p>
+                                {% endif %}
+                        </div>
+
+                        <!-- Input: Email -->
+                        <div class="mb-5">
+                            <input type="email" placeholder="Email" name="email"
+                                    value="{{ email or '' }}"
+                                    class="block w-full px-4 py-3 border rounded-xl
+                                    {% if errors.email %} border-red-500 {% else %} border-slate-200 {% endif %}">
+
+                            {% if errors.email %}
+                            <p class="text-red-600 text-xs mt-1">{{ errors.email }}</p>
+                            {% endif %}
+
+                        </div>
+
+                        <!-- Input: Password -->
+                        <div class="mb-6">
+                            <input type="password" placeholder="Password" name="password"
+                                class="block w-full px-4 py-3 border rounded-xl
+                                {% if errors.password %} border-red-500 {% else %} border-slate-200 {% endif %}">
+
+                            {% if errors.password %}
+                            <p class="text-red-600 text-xs mt-1">{{ errors.password }}</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Terms Checkbox -->
+                        <div class="flex items-start gap-2 mb-6 ml-1">
+                            <input type="checkbox" id="terms" required class="mt-1 w-4 h-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer accent-emerald-600">
+                            <label for="terms" class="text-xs text-slate-500 cursor-pointer leading-tight">
+                                I agree to the <a href="/terms" class="text-emerald-600 hover:underline">Terms of Service</a> and <a href="/privacy" class="text-emerald-600 hover:underline">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <!-- Button: Create Account -->
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow-lg shadow-emerald-500/30 active:scale-[0.98] transition-all">
+                            Create Account
+                        </button>
+                    </form>
+
+                    <!-- Link to Login Page -->
+                    <div class="mt-6 text-center">
+                        <!-- THIS LINKS TO LOGIN.HTML -->
+                        <a href="/login" class="text-emerald-600 font-medium hover:underline">Login</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleRegister(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Creating...';
+            setTimeout(() => {
+                alert("Create Account Clicked");
+                btn.innerText = originalText;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

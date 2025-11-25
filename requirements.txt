@@ -1,0 +1,7 @@
+flask
+flask-bcrypt
+flask-login
+flask_sqlalchemy
+pandas
+numpy  #(if needed)
+Flask-Migrate

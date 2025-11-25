@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Transaction - FinTrack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flatpickr Date Picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- ✅ Add this favicon tag -->
+    <link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-white rounded-3xl shadow-xl p-8">
+        <h2 class="text-2xl font-bold mb-6 text-center text-slate-900">Edit Transaction</h2>
+
+        <form method="POST">
+
+    <label class="text-sm font-medium text-slate-700 mb-1">Transaction Type</label>
+    <select name="type" class="w-full border p-3 rounded-lg text-slate-900 mb-4">
+        <option value="income" {% if transaction.type == 'income' %}selected{% endif %}>💰 Income</option>
+        <option value="expense" {% if transaction.type == 'expense' %}selected{% endif %}>💸 Expense</option>
+    </select>
+
+    <label class="text-sm font-medium text-slate-700 mb-1">Category</label>
+    <input type="text" name="category"
+           placeholder="e.g., Salary, Groceries, Rent"
+           value="{{ transaction.category }}"
+           class="w-full border p-3 rounded-lg text-slate-900 mb-4"/>
+
+    <label class="text-sm font-medium text-slate-700 mb-1">Amount</label>
+    <input type="number" step="0.01" name="amount"
+           placeholder="Enter amount"
+           value="{{ transaction.amount }}"
+           class="w-full border p-3 rounded-lg text-slate-900 mb-4"/>
+
+    <label class="text-sm font-medium text-slate-700 mb-1">Date</label>
+    <input type="date" name="date"
+           value="{{ transaction.date }}"
+           class="w-full border p-3 rounded-lg text-slate-900 mb-4"/>
+
+    <label class="text-sm font-medium text-slate-700 mb-1">Note (Optional)</label>
+    <input type="text" name="note"
+           placeholder="Short description of transaction"
+           value="{{ transaction.note }}"
+           class="w-full border p-3 rounded-lg text-slate-900 mb-4"/>
+
+    <button type="submit"
+        class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow-md active:scale-95 transition-all">
+        Update Transaction
+    </button>
+
+</form>
+
+<div class="text-center mt-4">
+    <a href="/dashboard" class="text-slate-600 hover:text-emerald-600 font-medium">
+        <i class="fas fa-chevron-left mr-1 text-xs"></i> Cancel
+    </a>
+</div>
+    </div>
+
+    <script>
+            flatpickr("input[name='date']", {
+                dateFormat: "Y-m-d",
+                allowInput: true,
+                disableMobile: true
+            });
+    </script>
+
+</body>
+</html>
