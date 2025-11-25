@@ -1,40 +1,40 @@
-# 📊 Personal Finance Manager
+# Personal Finance Manager:
 
-A clean and powerful web-based personal finance tracking application built with **Flask**, allowing users to manage income, expenses, budgets, analytics, search, pagination, and more — all inside a beautiful modern UI.
+A clean and powerful web-based personal finance tracking application built with **Flask**, allowing users to manage income, expenses, budgets, analytics, search, pagination, and more all inside a beautiful modern UI.
 
 ---
 
-## 🚀 Features
+## Features:-
 
-### ✅ **User Authentication**
+### **User Authentication:-**
 
 * Register / Login / Logout
 * Password hashing using **bcrypt**
 * Flash messages for success/error states
 
-### 💸 **Transaction Management**
+### **Transaction Management:-**
 
 * Add, edit, and delete income or expense records
 * Category selection & auto-categorized views
 * Notes, dates, and amount tracking
 * Instant UI feedback using Toastify
 
-### 📅 **Filtering System**
+### **Filtering System:-**
 
-Filter transactions by:
+Filter transactions by:-
 
 * Type (Income / Expense)
 * Category
 * Month
 * Year
 
-### 🔍 **Search + Pagination**
+### **Search + Pagination:-**
 
 * Search by category, amount, or note
 * Paginated transactions for large datasets
 * Clean Previous/Next navigation
 
-### 📈 **Interactive Financial Analytics**
+### **Interactive Financial Analytics:-**
 
 Powered by **Chart.js**
 
@@ -42,26 +42,17 @@ Powered by **Chart.js**
 * Category-Wise Expense Pie Chart
 * Auto-calculated totals (income, expense, balance)
 
-### 🧾 **Budget Management**
+### 🧾 **Budget Management:-**
 
 * Set monthly limits per category
 * Warning indicators
 * Red-dot badge for exceeded categories
 * Toast notification on limit breach
 
-### 🌙 **Dark Mode (Configurable)**
+### **Dark Mode (Configurable):-**
 
 * Tailwind’s class-based dark mode setup
 * Ready for theme toggle integration
-
-### 🎨 **Modern UI**
-
-Designed using:
-
-* **Tailwind CSS**
-* **FontAwesome Icons**
-* Smooth animations
-* Fully responsive
 
 ---
 
@@ -150,7 +141,7 @@ python app.py
 Visit:
 
 ```
-http://localhost:5000
+http://127.0.0.1:5000
 ```
 
 ---
